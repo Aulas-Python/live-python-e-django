@@ -1,5 +1,5 @@
 # Live de Python + Django
-## Implementando um mini sistema de gerenciamento de conteúdo (Content Manager Sistem - CMS)
+## Implementando um mini sistema de gerenciamento de conteúdo (Content Management System - CMS)
 
 # Etapa por Etapa
 
