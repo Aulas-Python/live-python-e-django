@@ -72,6 +72,7 @@ Quando criamos um projeto é criado um conjunto de arquivos que iremos falar sob
 0. Crie uma pasta para seu projeto e inicialeze um repositório git. (IMPORTANTE USAR O GIT)
 ```
     mkdir meuprojeto
+    cd meuprojeto
     git init
 ```
 1. crie seu ambiente virtual e ative
