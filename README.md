@@ -7,7 +7,7 @@
 
 ## Construa seu ambiente de desenvolvimento
 
-1. Isole seu ambiente usando algum virtualizador (virtualenv, pipenv, env) a seu gosto
+1. Isole seu ambiente usando algum virtualizador (virtualenv, pipenv, venv) a seu gosto
 2. Entendendo o versionamento do python e seu canivete suiço
 3. Use o Sistema de instalação de pacotes do python (Python Install Packages - PIP) para instalar o que você precisa e mantenha um registro de suas dependências.
 4. Ative e desative seu ambiente de desenvolvimento
