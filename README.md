@@ -97,6 +97,7 @@ Quando criamos um projeto é criado um conjunto de arquivos que iremos falar sob
 ```
 6. Abra em um navegador de internet indo até o endereço, http://localhost:8000
 
+# Etapa 5
 
 ## O MVC do Django ou melhor MTV
 
@@ -153,7 +154,7 @@ Assim que criamos uma aplicação precisamos pluga-la ao projeto, siga até a pa
 
 Na pasta do seu projeto também tem um arquivo urls.py, que fornece uma forma de criar rotas e manipular o sistema de roteamento da nossa aplicação de forma simples e bastante plugavel. Abra-o e vamos analisa-lo.
 
-Abra a pasta da sua apliacação e vamos procurar entender cada uma das partes de uma aplicação.
+### Abra a pasta da sua apliacação e vamos procurar entender cada uma das partes de uma aplicação.
 
 O arquivo views.py é onde vamos escrever nossas regras de controle da apliacaçãao. É aqui que codificamos como vemos a apliacação a lista das postagens publicadas, editamos uma postage em especial, podemos apagar entre outras coisas. Vamos criar uma view que receba uma requisição (request) e retorne uma resposta (response). Abra o arquivo views.py e vamos fazer nossa primeira view, que podem ser simples funções python.
 
@@ -171,3 +172,23 @@ No arquivo models.py utilizamos para descrever os atributos dos objetos da nassa
         titulo = models.CharField...
         conteudo = models.TextField...
 ```
+
+O arquivo apps.py define a classe default de configuração da aplicação. Não iremos nos aprofundar neste arquivo mas entenderemos sua existência.
+
+O arquivo admin.py permite configurarmos uma interface de administração que o django já fornece de forma integrada.
+
+Em tests.py fica claro que seu objetivo é escrevermos testes para nossa aplicação. Podemos fazer alguns testes pra ver seu funcionamento.
+
+E o arquivo __ init __.py define o contexto de um pacote que pode ser importado por outras aplicações e classes.
+
+# Etapa 6
+
+Entendendo e implementando nossa aplicação de Blog.
+
+Nossa aplicação será um blog simples, com uma página inicial que lista todas as postagens do blog. Tambem permite por meio do registro de um usuario adcionar, editar e apagar novas postagens. O usuário pode usando o sistema de usuarios do django bem como um sistema de autenticação via rede social (facebook). Apenas um usário cadastrado no sistema pode inserir, editar e deletar.
+
+Vamos criar um modelo em UML e se for conveniente um diagrama de Caso de Uso para nossa aplicação e seguir fielmente o modelo definido.
+
+Podemos usar o github para gerenciar as issues a serem implementadas. Trabalhar em equipes com diversas branchs ativas.
+
+E Seguindo o barco.
