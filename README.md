@@ -47,8 +47,6 @@ A instalação tanto do Flask quanto do Django podem ser feitas usando o PIP.
 
 ```code
 pip install django
-ou
-pip install flask 
 ```
 
 ## Dajngo The web framework for perfectionists with deadlines.
@@ -87,10 +85,89 @@ Quando criamos um projeto é criado um conjunto de arquivos que iremos falar sob
 ```
 3. Construa seu projeto
 ```
-    django-admin startproject meusite
+    django-admin startproject meusite .
 ```
 4. Veja os arquivos criados pelo django
 ```
     tree
 ```
-5. ... preciso sair agora ... ;) continuo depois...
+5. Para executar o projeto. 
+```
+    python3 manage.py runserver
+```
+6. Abra em um navegador de internet indo até o endereço, http://localhost:8000
+
+
+## O MVC do Django ou melhor MTV
+
+Quando desenvolvemos alguma cosia, geralmente nos deparamos com coisas rotineiras, determinadas estruturas já foram implementadas anteriormente por outras pessoas. Isso quer dizer que coisas se repetem, algumas coisas se repetem tanto que acabam sendo padronizadas e isso é muito bom, porque acaba diminuindo nosso gasto de energia com determinados problemas.
+
+Uma forma interessante para echergarmos essas repetições de padrões é olharmos para as fachadas de casas em uma cidade, perceba que elas acabam se repetindo em forma, modelos, estruturas.
+
+> __Arquitetura__ refere-se a toda construção e modelagem artificial do ambiente físico, incluindo seu processo de projeto e o produto deste, sendo a palavra também usada para definir os estilos e métodos de projeto das construções de uma época.  (Wikipedia)
+
+Agora pensando no mesmo conceito de arquitetura sobe a ótica do desenvolvimento de software, quais são:
+
+0. o fisico é o abstrato (software)
+1. os processos?
+2. o produto?
+3. o que é o estilo?
+
+## Tudo são padrões!
+
+Um padrão comum no desenvolvimento de produtos para web é separar a aplicação em no mínimo 3 paters denominada de camadas. No padrão de 3 Camadas separamos em: Modelo de dados, Visualização, Controle. Este modelo é conhecido como Arquitetura MVC (Model - View - Control). O Framework
+
+### O Modelo (Model)
+
+É a forma como vemos os dados de uma aplicação. São classe a quel eplicitamos todas as caracteristicas de um determinado objeto da aplicação.
+
+### A Visualiazação (View) - No django são chamadas de Template (T)
+
+O que nós vemos em uma aplicativo, pode ser escrito de diversas formas mas comumente estas telas são escritas em HTML. Uma forma elegante aqui é usar uma linguagem de template que fornece acesso fácio as dados de variáveis.
+
+### O Controle (Control) p No django chamada de view.
+
+Sua aplicação faz alguma coisa, permite interações do usuário, verifica o estado da aplicação, manipula dados e também retornam com os dados necessários a depender da interação destes usuários.
+
+No Django por trabalharmos com a ideia de templates as a expresão View é trocada por Template, e curiosamente o controle (C) é chamado de View (V) assim o MVC do django é o MTV (Model - Template - View).
+
+## Criando uma Aplicação
+
+Uma aplicação django permite visualizar de forma clara o modelo de arquitetura MTV. Para observarmos, vamos construir a primeira aplicação do nosso projeto meusite. E meu site possui um blog onde posso postar algum conteudo. Para criar nossa aplicação vã ao terminal de comandos e execute.
+
+```python
+    python3 manage.py startapp blog
+```
+
+Aconselho aqui utilizar sua suite preferiada para codificar o seu projeto. Eu irei utilizar o VSCode.
+
+Assim que criamos uma aplicação precisamos pluga-la ao projeto, siga até a pasta do projeto e abra o arquivo settings.py siga atéa variavel INSTALLED_APPS e adcione sua aplicação ao projeto.
+
+```settings.py
+    INSTALLED_APPS = [
+        ...
+        'Blog.apps.BlogConfig'
+        ...
+    ]
+```
+
+Na pasta do seu projeto também tem um arquivo urls.py, que fornece uma forma de criar rotas e manipular o sistema de roteamento da nossa aplicação de forma simples e bastante plugavel. Abra-o e vamos analisa-lo.
+
+Abra a pasta da sua apliacação e vamos procurar entender cada uma das partes de uma aplicação.
+
+O arquivo views.py é onde vamos escrever nossas regras de controle da apliacaçãao. É aqui que codificamos como vemos a apliacação a lista das postagens publicadas, editamos uma postage em especial, podemos apagar entre outras coisas. Vamos criar uma view que receba uma requisição (request) e retorne uma resposta (response). Abra o arquivo views.py e vamos fazer nossa primeira view, que podem ser simples funções python.
+
+```view.py
+    from django.shortcuts import render, HTTPResponse    
+
+    def index(request):
+        return HTTPResponse('Ola Mundo')
+```
+
+No arquivo models.py utilizamos para descrever os atributos dos objetos da nassa aplicação. Na aplicação blog podemos definir um objeto como sendo uma postage. Este objeto tem um titulo, um texto de conteúdo, tem uma data de publicação e quando ele foi atualização, pode ter uma imagem, ou qualquer outros atributos que podem ser abstraido ao objeto. Para construir um modelo utilizamos um pacote do django que permite fazer o mapeamento de um objeto em forma de classe. Para fazer isto vamos importar o pacote models e definir uma classse de modelo que herda a classe Model que permite definir o tipo dos atributos no forma de modelos. Vamos criar uma classe assim:
+
+```models.py
+    class Post(models.Model):
+        titulo = models.CharField...
+        conteudo = models.TextField...
+```
