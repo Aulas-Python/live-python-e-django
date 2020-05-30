@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+<form method='post'>
+{% csrf_token %}
+
+{{form.username}}
+<br>
+{{form.password}}
+
+<button>Enviar</button>
+</form>
+
+{% endblock %}
