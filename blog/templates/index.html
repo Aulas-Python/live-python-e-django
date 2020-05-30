@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    Veja todas as noticias
+{% endblock %}
+
+{% block conteudo %}
+    <h1>Todas as minhas noticias</h1>
+
+    {% if request.user.is_authenticated %}
+        Ola {{ request.user }}
+    {% else %}
+        Va fazer login camarada
+    {% endif %}
+
+    {% for post in posts %}
+
+    <div class='post'>
+        <h3>{{post.titulo}}<h3>
+        <h5>{{post.autor}}</h5>
+        <p>{{post.conteudo}}</p>
+        <img class='menor' src="{{post.imagem.url}}">
+        <date>{{post.data_criacao}}</date>
+        <br>
+        <date>{{post.data_atualizacao}}</date>
+    </div>
+
+    {% endfor %}
+
+{% endblock %}
